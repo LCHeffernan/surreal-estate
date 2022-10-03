@@ -1,0 +1,19 @@
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid gray;
+}
+
+.logo {
+    width: 150px;
+}
+
+.navbar-links {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-links-item {
+    display: inline;
+    margin: 0px;
+    padding: 4px;
+}
