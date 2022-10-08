@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
-// import axios from "axios";
-import postFields from "../requests/postFields";
+import axios from "axios";
+// import postFields from "../requests/postFields";
 import "../styles/add-property.css";
 
 const AddProperty = () => {
@@ -19,7 +19,12 @@ const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
 
   const handleAddProperty = (event) => {
-    postFields(fields);
+    axios
+      .post("http://localhost:3000/api/v1/PropertyListing/", fields)
+      .then((res) => {
+        console.log(res);
+      });
+    // postFields(fields);
     event.preventDefault();
   };
 
