@@ -7,6 +7,7 @@ const NavBar = () => {
     <div className="navbar">
       <img
         className="logo"
+        data-testid="logo"
         src="/logo.png"
         alt="logo of purple castle with words 'surreal estate'"
       />

@@ -1,24 +1,25 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import App from "../components/App";
+import AddProperty from "../components/AddProperty";
 
-describe("App", () => {
+describe("Properties", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <BrowserRouter>
-        <App />
+        <AddProperty />
       </BrowserRouter>
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("renders learn react link", () => {
+
+  it("renders correct text", () => {
     render(
       <BrowserRouter>
-        <App />
+        <AddProperty />
       </BrowserRouter>
     );
-    const linkElement = screen.getByText(/surreal estate/i);
-    expect(linkElement).toBeInTheDocument();
+    const text = screen.getByText(/add property page/i);
+    expect(text).toBeInTheDocument();
   });
 });

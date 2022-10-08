@@ -1,4 +1,7 @@
+/* eslint-disable no-console */
 import React, { useState } from "react";
+// import axios from "axios";
+import postFields from "../requests/postFields";
 import "../styles/add-property.css";
 
 const AddProperty = () => {
@@ -16,9 +19,8 @@ const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
 
   const handleAddProperty = (event) => {
+    postFields(fields);
     event.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log(fields);
   };
 
   const handleFieldChange = (event) => {
