@@ -4,18 +4,21 @@ import Alert from "../components/Alert";
 
 describe("Alert", () => {
   it("renders correctly", () => {
-    const { asFragment } = render(<Alert />);
+    const { asFragment } = render(<Alert message="" />);
     expect(asFragment()).toMatchSnapshot();
   });
 
-//   xit("displays an error message", () => {
-//     const { getByText } = render(<Alert message="Error!" />);
-//     expect(getByText(/Error/).textContent).toBe("Error!");
-//   });
+  it("displays an error message", () => {
+    const { getByText, asFragment } = render(<Alert message="Error!" />);
+    expect(asFragment()).toMatchSnapshot();
+    expect(getByText(/Error/).textContent).toBe("Error!");
+  });
 
-//   xit("displays a success message", () => {
-//     const { getByText } = render(<Alert message="Success!!!!" success />);
-
-//     expect(getByText(/Success/).textContent).toBe("Success!!!!");
-//   });
+  it("displays a success message", () => {
+    const { getByText, asFragment } = render(
+      <Alert message="Success!!!!" success />
+    );
+    expect(asFragment()).toMatchSnapshot();
+    expect(getByText(/Success/).textContent).toBe("Success!!!!");
+  });
 });
