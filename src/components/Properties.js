@@ -1,28 +1,43 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import PropertyCard from "./PropertyCard";
+import Alert from "./Alert";
+import "../styles/properties.css";
 
-const Properties = ({
-  title,
-  type,
-  bathrooms,
-  bedrooms,
-  price,
-  city,
-  email,
-}) => {
+const Properties = () => {
+  const initialState = {
+    properties: [],
+    message: "",
+  };
+
+  const [properties, setProperties] = useState(initialState.properties);
+  const [alert, setAlert] = useState(initialState.message);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/v1/PropertyListing/")
+      .then((res) => {
+        setProperties(res.data);
+        setAlert({
+          message: "Property Added",
+          isSuccess: true,
+        });
+      })
+      .catch(() => {
+        setAlert({
+          message: "Server error. Please try again later.",
+          isSuccess: false,
+        });
+      });
+  }, []);
+
   return (
-    <div>
-      Properties Page
-      <PropertyCard
-        title={title}
-        type={type}
-        bathrooms={bathrooms}
-        bedrooms={bedrooms}
-        price={price}
-        city={city}
-        email={email}
-      />
+    <div className="property-card-container">
+      <Alert message={alert.message} success={alert.isSuccess} />
+      {properties.map((property) => (
+        <div key={property._id} className="item">
+          <PropertyCard {...property} />
+        </div>
+      ))}
     </div>
   );
 };
@@ -35,16 +50,6 @@ Properties.defaultProps = {
   price: 50000,
   city: "Manchester",
   email: "test@codes.com",
-};
-
-Properties.propTypes = {
-  title: PropTypes.string,
-  type: PropTypes.string,
-  bathrooms: PropTypes.number,
-  bedrooms: PropTypes.number,
-  price: PropTypes.number,
-  city: PropTypes.string,
-  email: PropTypes.string,
 };
 
 export default Properties;

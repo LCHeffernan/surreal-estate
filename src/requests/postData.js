@@ -1,6 +1,6 @@
 // import axios from "axios";
 
-// const postFields = (fields, setAlert) => {
+// const postData = (fields, setAlert) => {
 //   axios
 //     .post("http://localhost:3000/api/v1/PropertyListing/", fields)
 //     .then(() => {
@@ -17,4 +17,4 @@
 //     });
 // };
 
-// export default postFields;
+// export default postData;

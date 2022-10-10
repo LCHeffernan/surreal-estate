@@ -46,7 +46,6 @@ describe("PropertyCard", () => {
     expect(getByTestId("bed-icon")).toHaveClass("bedIcon");
     expect(getByText("50000")).toHaveClass("price");
     expect(getByTestId("sterling-icon")).toHaveClass("sterlingIcon");
-    expect(getByText("test@codes.com")).toHaveClass("email");
     expect(getByTestId("envelope-icon")).toHaveClass("envelopeIcon");
   });
 });

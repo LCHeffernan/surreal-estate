@@ -6,7 +6,9 @@ import {
   faBed,
   faSterlingSign,
   faEnvelope,
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
+import "../styles/property-card.css";
 
 const PropertyCard = ({
   title,
@@ -19,6 +21,9 @@ const PropertyCard = ({
 }) => {
   return (
     <div className="property-card">
+      <div className="houseIconContainer">
+        <FontAwesomeIcon icon={faHouse} className="houseIcon" />
+      </div>
       <div className="title">{title}</div>
       <div className="type-and-city">{`${type}-${city}`}</div>
       <div className="bathrooms">
@@ -46,12 +51,13 @@ const PropertyCard = ({
         {price}
       </div>
       <div className="email">
-        <FontAwesomeIcon
-          icon={faEnvelope}
-          className="envelopeIcon"
-          data-testid="envelope-icon"
-        />
-        {email}
+        <a href={`mailto:${email}`}>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            className="envelopeIcon"
+            data-testid="envelope-icon"
+          />
+        </a>
       </div>
     </div>
   );

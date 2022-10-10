@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
-import postFields from "../requests/postFields";
+import postData from "../requests/postData";
 import Alert from "./Alert";
 import "../styles/add-property.css";
 
@@ -24,7 +24,7 @@ const AddProperty = () => {
   const [alert, setAlert] = useState(initialState.alert);
 
   const handleAddProperty = (event) => {
-    postFields(fields, setAlert);
+    postData(fields, setAlert);
     event.preventDefault();
     setAlert({ message: "", isSuccess: false });
   };
