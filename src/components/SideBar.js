@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,11 +7,9 @@ import "../styles/sidebar.css";
 
 const SideBar = () => {
   const [query, setQuery] = useState("");
+  const { search } = useLocation();
 
   const buildQueryString = (operation, valueObj) => {
-    console.log("hello");
-    const { search } = useLocation();
-    console.log(search);
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...currentQueryParams,
@@ -26,7 +23,6 @@ const SideBar = () => {
       encode: false,
     });
   };
-  //   console.log(query);
   const navigate = useNavigate();
   const handleSearch = (event) => {
     event.preventDefault();
