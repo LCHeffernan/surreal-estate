@@ -1,0 +1,17 @@
+.city-link-container {
+    margin: 15px 5px;
+}
+
+.city-link {
+    text-decoration: none;
+    color: black;
+}
+
+.filter-city-title {
+    font-weight: bold;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: center;
+}

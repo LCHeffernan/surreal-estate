@@ -5,8 +5,9 @@
 .property-card {
     margin: auto;
     border: 1px solid black;
+    background-color: white;
     border-radius: 3px;
-    box-shadow: 3px 3px lightgray;
+    /* box-shadow: 3px 3px lightgray; */
     width: 100%;
     height: auto;
 }

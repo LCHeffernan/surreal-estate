@@ -6,9 +6,9 @@ describe("PropertyCard", () => {
   const validProps = {
     title: "2 bed",
     type: "cottage",
-    bathrooms: 1,
-    bedrooms: 3,
-    price: 50000,
+    bathrooms: "1",
+    bedrooms: "3",
+    price: "50000",
     city: "Leeds",
     email: "test@codes.com",
   };

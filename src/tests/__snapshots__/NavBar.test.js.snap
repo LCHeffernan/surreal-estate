@@ -15,7 +15,7 @@ exports[`NavBar renders correctly 1`] = `
       class="navbar-links"
     >
       <li
-        class="navbar-links-item"
+        class="navbar-link"
       >
         <a
           class="item"
@@ -25,7 +25,7 @@ exports[`NavBar renders correctly 1`] = `
         </a>
       </li>
       <li
-        class="navbar-links-item"
+        class="navbar-link"
       >
         <a
           class="item"

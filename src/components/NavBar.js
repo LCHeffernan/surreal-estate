@@ -12,12 +12,12 @@ const NavBar = () => {
         alt="logo of purple castle with words 'surreal estate'"
       />
       <ul className="navbar-links">
-        <li className="navbar-links-item">
+        <li className="navbar-link">
           <Link className="item" to="/">
             View Properties
           </Link>
         </li>
-        <li className="navbar-links-item">
+        <li className="navbar-link">
           <Link className="item" to="add-property">
             Add a Property
           </Link>
