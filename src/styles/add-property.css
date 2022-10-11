@@ -1,5 +1,7 @@
 .add-property {
     padding: 10px;
+    background-color: rgb(171, 150, 171);
+    height: 100vh;
 }
 
 label {

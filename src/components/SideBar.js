@@ -1,23 +1,55 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+/* eslint-disable no-console */
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import qs from "qs";
 import "../styles/sidebar.css";
 
 const SideBar = () => {
+  const [query, setQuery] = useState("");
+
   const buildQueryString = (operation, valueObj) => {
+    console.log("hello");
     const { search } = useLocation();
+    console.log(search);
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
     const newQueryParams = {
       ...currentQueryParams,
-      [operation]: JSON.stringify(valueObj),
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentQueryParams[operation] || "{}"),
+        ...valueObj,
+      }),
     };
     return qs.stringify(newQueryParams, {
       addQueryPrefix: true,
       encode: false,
     });
   };
+  //   console.log(query);
+  const navigate = useNavigate();
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const newQueryString = buildQueryString("query", {
+      title: { $regex: query },
+    });
+    // pushes new query string into brower's history and update address bar
+    navigate(newQueryString);
+  };
   return (
     <div className="side-bar">
+      <form onSubmit={handleSearch}>
+        <input
+          className="search-input"
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button className="search-button" type="submit">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+      </form>
+
       <div className="filter-city-title">Filter by city</div>
       <div className="city-link-container">
         <Link

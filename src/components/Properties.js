@@ -38,7 +38,7 @@ const Properties = () => {
 
   // destructure search for useLocation hook - browser history
   const { search } = useLocation();
-  console.log(search);
+  // console.log(search);
 
   useEffect(() => {
     axios
