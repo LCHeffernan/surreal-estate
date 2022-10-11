@@ -1,13 +1,21 @@
-.city-link-container {
+.city-link-container,
+.sort-link-container {
     margin: 15px 5px;
 }
 
-.city-link {
+.sort-city-title {
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+.city-link,
+.sort-link {
     text-decoration: none;
     color: black;
 }
 
-.filter-city-title {
+.filter-city-title,
+.sort-city-title {
     font-weight: bold;
 }
 

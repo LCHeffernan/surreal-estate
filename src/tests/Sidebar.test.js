@@ -1,24 +1,24 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import App from "../components/App";
+import SideBar from "../components/SideBar";
 
-describe("App", () => {
+describe("Sidebar", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <BrowserRouter>
-        <App />
+        <SideBar />
       </BrowserRouter>
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  xit("renders learn react link", () => {
-    render(
+
+  it("renders title text", () => {
+    const { getByText } = render(
       <BrowserRouter>
-        <App />
+        <SideBar />
       </BrowserRouter>
     );
-    const linkElement = screen.getByText(/surreal estate/i);
-    expect(linkElement).toBeInTheDocument();
+    expect(getByText(/filter by city/i)).toBeInTheDocument();
   });
 });

@@ -5,7 +5,6 @@ exports[`App renders correctly 1`] = `
   <div
     class="App"
   >
-    surreal estate
     <div
       class="navbar"
     >
@@ -19,7 +18,7 @@ exports[`App renders correctly 1`] = `
         class="navbar-links"
       >
         <li
-          class="navbar-links-item"
+          class="navbar-link"
         >
           <a
             class="item"
@@ -29,7 +28,7 @@ exports[`App renders correctly 1`] = `
           </a>
         </li>
         <li
-          class="navbar-links-item"
+          class="navbar-link"
         >
           <a
             class="item"
@@ -41,8 +40,90 @@ exports[`App renders correctly 1`] = `
       </ul>
     </div>
     <div
-      class="property-card-container"
-    />
+      class="properties-container"
+    >
+      <div
+        class="sidebar"
+      >
+        <div
+          class="side-bar"
+        >
+          <div
+            class="filter-city-title"
+          >
+            Filter by city
+          </div>
+          <div
+            class="city-link-container"
+          >
+            <a
+              class="city-link"
+              href="/?query={\\"city\\":\\"Manchester\\"}"
+            >
+              Manchester
+            </a>
+          </div>
+          <div
+            class="city-link-container"
+          >
+            <a
+              class="city-link"
+              href="/?query={\\"city\\":\\"Leeds\\"}"
+            >
+              Leeds
+            </a>
+          </div>
+          <div
+            class="city-link-container"
+          >
+            <a
+              class="city-link"
+              href="/?query={\\"city\\":\\"Sheffield\\"}"
+            >
+              Sheffield
+            </a>
+          </div>
+          <div
+            class="city-link-container"
+          >
+            <a
+              class="city-link"
+              href="/?query={\\"city\\":\\"Liverpool\\"}"
+            >
+              Liverpool
+            </a>
+          </div>
+          <div
+            class="sort-city-title"
+          >
+            Sort By
+          </div>
+          <div
+            class="sort-link-container"
+          >
+            <a
+              class="sort-link"
+              href="/?sort={\\"price\\":1}"
+            >
+              Price Ascending
+            </a>
+          </div>
+          <div
+            class="sort-link-container"
+          >
+            <a
+              class="sort-link"
+              href="/?sort={\\"price\\":-1}"
+            >
+              Price Descending
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="property-card-container"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;
