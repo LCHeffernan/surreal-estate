@@ -22,10 +22,17 @@
 }
 
 .navbar-link,
-.navbar-logo {
+.navbar-logo,
+.login-button {
     display: inline;
     margin: 0px;
     padding: 0px 4px;
+}
+
+.login-button {
+    float: right;
+    padding: 0px;
+    height: 100%;
 }
 
 .navbar-link {

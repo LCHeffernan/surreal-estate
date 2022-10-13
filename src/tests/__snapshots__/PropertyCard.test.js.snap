@@ -121,6 +121,9 @@ exports[`PropertyCard renders correctly 1`] = `
         </svg>
       </a>
     </div>
+    <div>
+      no save option
+    </div>
   </div>
 </DocumentFragment>
 `;

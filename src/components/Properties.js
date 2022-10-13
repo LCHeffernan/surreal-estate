@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
 import "../styles/properties.css";
 
-const Properties = () => {
+const Properties = ({ userID }) => {
   const initialState = {
     properties: [],
     alert: {
@@ -38,14 +39,19 @@ const Properties = () => {
 
   // destructure search for useLocation hook - browser history
   const { search } = useLocation();
-  // console.log(search);
-
   useEffect(() => {
     axios
       .get(`http://localhost:3000/api/v1/PropertyListing${search}`)
       .then(({ data }) => setProperties(data))
       .catch((err) => console.log(err));
   }, [search]);
+
+  const handleSaveProperty = (propertyId) => {
+    axios.post("http://localhost:3000/api/v1/Favourite", {
+      propertyListing: propertyId,
+      fbUserId: userID,
+    });
+  };
 
   return (
     <div className="properties-container">
@@ -60,7 +66,11 @@ const Properties = () => {
         />
         {properties.map((property) => (
           <div key={property._id} className="item">
-            <PropertyCard {...property} />
+            <PropertyCard
+              {...property}
+              userID={userID}
+              onSaveProperty={handleSaveProperty}
+            />
           </div>
         ))}
       </div>
@@ -68,14 +78,8 @@ const Properties = () => {
   );
 };
 
-Properties.defaultProps = {
-  title: "2 bed",
-  type: "cottage",
-  bathrooms: 1,
-  bedrooms: 3,
-  price: 50000,
-  city: "Manchester",
-  email: "test@codes.com",
+Properties.propTypes = {
+  userID: PropTypes.string.isRequired,
 };
 
 export default Properties;
