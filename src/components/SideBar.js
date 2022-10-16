@@ -1,16 +1,13 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import qs from "qs";
 import "../styles/sidebar.css";
 
 const SideBar = () => {
   const [query, setQuery] = useState("");
   const { search } = useLocation();
-  const [favouritesId, setFavouritesId] = useState([]);
 
   const buildQueryString = (operation, valueObj) => {
     const currentQueryParams = qs.parse(search, { ignoreQueryPrefix: true });
@@ -36,37 +33,8 @@ const SideBar = () => {
     navigate(newQueryString);
   };
 
-  const getFavourites = () => {
-    axios.get("http://localhost:3000/api/v1/Favourite").then((response) => {
-      setFavouritesId(response.data.map((obj) => obj._id));
-    });
-  };
-
-  const deleteFavourites = () => {
-    for (let i = 0; i < favouritesId.length; i + 1) {
-      const favouriteID = favouritesId[i];
-      axios.delete(`http://localhost:3000/api/v1/Favourite/${favouriteID}`);
-    }
-  };
-
   return (
     <div className="side-bar">
-      <button
-        type="button"
-        onClick={() => {
-          getFavourites();
-        }}
-      >
-        get fav ids
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          deleteFavourites();
-        }}
-      >
-        delete ALL fav
-      </button>
       <form onSubmit={handleSearch}>
         <input
           className="search-input"

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,8 +8,9 @@ import {
   faSterlingSign,
   faEnvelope,
   faHouse,
-  faHeart,
+  //   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import "../styles/property-card.css";
 
 const PropertyCard = ({
@@ -71,7 +73,7 @@ const PropertyCard = ({
             onSaveProperty(_id);
           }}
         >
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={farHeart} />
         </button>
       ) : (
         <div>no save option</div>

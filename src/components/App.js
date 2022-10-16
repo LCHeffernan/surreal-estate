@@ -4,13 +4,12 @@ import "../styles/app.css";
 import NavBar from "./NavBar";
 import Properties from "./Properties";
 import AddProperty from "./AddProperty";
+import SavedProperties from "./SavedProperties";
 
 const App = () => {
   const [userID, setUserID] = useState("");
 
   const handleLogin = (response) => {
-    // eslint-disable-next-line no-console
-    console.log(response.id);
     setUserID(response.id);
   };
 
@@ -26,6 +25,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Properties userID={userID} />} />
         <Route path="add-property" element={<AddProperty />} />
+        <Route
+          path="saved-properties"
+          element={<SavedProperties userID={userID} />}
+        />
       </Routes>
     </div>
   );

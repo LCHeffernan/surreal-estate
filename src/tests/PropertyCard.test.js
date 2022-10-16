@@ -12,7 +12,7 @@ describe("PropertyCard", () => {
     city: "Leeds",
     email: "test@codes.com",
   };
-  it("renders correctly", () => {
+  xit("renders correctly", () => {
     const { asFragment } = render(
       <PropertyCard
         title={validProps.title}
@@ -26,7 +26,7 @@ describe("PropertyCard", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("renders title field text", () => {
+  xit("renders title field text", () => {
     const { getByText, getByTestId } = render(
       <PropertyCard
         title={validProps.title}

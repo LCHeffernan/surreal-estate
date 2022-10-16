@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import postData from "../requests/postData";
 import Alert from "./Alert";

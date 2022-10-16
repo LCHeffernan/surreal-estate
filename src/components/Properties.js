@@ -19,6 +19,7 @@ const Properties = ({ userID }) => {
 
   const [properties, setProperties] = useState(initialState.properties);
   const [alert, setAlert] = useState(initialState.alert);
+
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/v1/PropertyListing/")
@@ -47,9 +48,26 @@ const Properties = ({ userID }) => {
   }, [search]);
 
   const handleSaveProperty = (propertyId) => {
-    axios.post("http://localhost:3000/api/v1/Favourite", {
-      propertyListing: propertyId,
-      fbUserId: userID,
+    axios.get("http://localhost:3000/api/v1/Favourite").then((response) => {
+      console.log(
+        response.data.filter((item) => item.propertyListing === propertyId)
+      );
+      const favouriteExists = response.data.filter(
+        (item) => item.propertyListing === propertyId
+      );
+      console.log(favouriteExists);
+      if (favouriteExists.length === 0) {
+        axios
+          .post("http://localhost:3000/api/v1/Favourite", {
+            propertyListing: propertyId,
+            fbUserId: userID,
+          })
+          .then(() => {
+            console.log("saved");
+          });
+      } else {
+        console.log("already exists");
+      }
     });
   };
 
