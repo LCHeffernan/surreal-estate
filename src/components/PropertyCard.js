@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,9 +8,9 @@ import {
   faSterlingSign,
   faEnvelope,
   faHouse,
-  //   faHeart,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
 import "../styles/property-card.css";
 
 const PropertyCard = ({
@@ -23,8 +23,45 @@ const PropertyCard = ({
   city,
   email,
   userID,
-  onSaveProperty,
 }) => {
+  const [savedIcon, setSavedIcon] = useState(emptyHeart);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/v1/Favourite")
+      .then((response) =>
+        setSavedIcon(
+          response.data.filter((item) => item.propertyListing === _id).length >
+            0
+            ? faHeart
+            : emptyHeart
+        )
+      );
+  }, []);
+
+  const handleSaveProperty = (propertyId) => {
+    axios.get("http://localhost:3000/api/v1/Favourite").then((response) => {
+      const favouriteExists = response.data.filter(
+        (item) => item.propertyListing === propertyId
+      );
+      if (favouriteExists.length === 0) {
+        axios
+          .post("http://localhost:3000/api/v1/Favourite", {
+            propertyListing: propertyId,
+            fbUserId: userID,
+          })
+          .then(() => {
+            setSavedIcon(faHeart);
+          });
+      } else {
+        axios.delete(
+          `http://localhost:3000/api/v1/Favourite/${favouriteExists[0]._id}`
+        );
+        setSavedIcon(emptyHeart);
+      }
+    });
+  };
+
   return (
     <div className="property-card">
       <div className="houseIconContainer">
@@ -70,10 +107,10 @@ const PropertyCard = ({
           className="save"
           type="button"
           onClick={() => {
-            onSaveProperty(_id);
+            handleSaveProperty(_id);
           }}
         >
-          <FontAwesomeIcon icon={farHeart} />
+          <FontAwesomeIcon icon={savedIcon} />
         </button>
       ) : (
         <div>no save option</div>
@@ -93,7 +130,6 @@ PropertyCard.propTypes = {
   city: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   userID: PropTypes.string.isRequired,
-  onSaveProperty: PropTypes.func.isRequired,
 };
 
 export default PropertyCard;

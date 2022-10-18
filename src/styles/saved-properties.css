@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .saved-container {
+    display: grid;
+    /* grid-template-columns: 12% auto; */
+    /* grid-template-areas: */
+      /* "sidebar main"; */
+    /* padding: 0px 0px 0px 0px; */
+    background-color: rgb(171, 150, 171);
+    /* height: 100%; */
+    /* min-height: 100vh; */
+  }
+  
+  /* .property-card-container {
+    grid-area: main;
+  } */
+  
+  /* .sidebar {
+    position: fixed;
+    grid-area: sidebar;
+    background-color: white;
+    padding: 0px 0.5rem;
+    border-right: 1px solid black;
+    height: 100vh;
+    width: 12%;
+  } */
+  
+  /* .alert {
+    grid-area: alert;
+  } */
+  
+  .saved-container > .item {
+    display: inline-block;
+    width: 33.33%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }

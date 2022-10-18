@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import SavedPropertyCard from "./SavedPropertyCard";
+import "../styles/saved-properties.css";
 
 const SavedProperties = ({ userID }) => {
   const [favourites, setFavourites] = useState([]);
@@ -22,7 +23,7 @@ const SavedProperties = ({ userID }) => {
 
   // if user not logged on want to block this route to them
   return (
-    <div>
+    <div className="saved-container">
       {userID ? (
         favourites.map((favourite) => (
           <div key={favourite._id} className="item">

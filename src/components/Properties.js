@@ -19,12 +19,19 @@ const Properties = ({ userID }) => {
 
   const [properties, setProperties] = useState(initialState.properties);
   const [alert, setAlert] = useState(initialState.alert);
+  // { propertyId: "", isSaved: true },
+  // ]);
 
   useEffect(() => {
     axios
       .get("http://localhost:3000/api/v1/PropertyListing/")
       .then((res) => {
         setProperties(res.data);
+        // axios.get("http://localhost:3000/api/v1/Favourite").then((response) => {
+        //   const ids = response.data.propertyListing;
+        //   const isSaveds = ids.map(() => true);
+        //   setIsFavourites();
+        // });
         setAlert({
           message: "",
           isSuccess: true,
@@ -47,30 +54,6 @@ const Properties = ({ userID }) => {
       .catch((err) => console.log(err));
   }, [search]);
 
-  const handleSaveProperty = (propertyId) => {
-    axios.get("http://localhost:3000/api/v1/Favourite").then((response) => {
-      console.log(
-        response.data.filter((item) => item.propertyListing === propertyId)
-      );
-      const favouriteExists = response.data.filter(
-        (item) => item.propertyListing === propertyId
-      );
-      console.log(favouriteExists);
-      if (favouriteExists.length === 0) {
-        axios
-          .post("http://localhost:3000/api/v1/Favourite", {
-            propertyListing: propertyId,
-            fbUserId: userID,
-          })
-          .then(() => {
-            console.log("saved");
-          });
-      } else {
-        console.log("already exists");
-      }
-    });
-  };
-
   return (
     <div className="properties-container">
       <div className="sidebar">
@@ -84,11 +67,7 @@ const Properties = ({ userID }) => {
         />
         {properties.map((property) => (
           <div key={property._id} className="item">
-            <PropertyCard
-              {...property}
-              userID={userID}
-              onSaveProperty={handleSaveProperty}
-            />
+            <PropertyCard {...property} userID={userID} />
           </div>
         ))}
       </div>
