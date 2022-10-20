@@ -34,7 +34,9 @@ const AddProperty = () => {
 
   return (
     <div className="add-property">
-      Add Property Page
+      <p>
+        Enter property information and click submit to add property to database.
+      </p>
       <Alert message={alert.message} success={alert.isSuccess} />
       <form onSubmit={handleAddProperty}>
         <div className="form-field">
@@ -137,8 +139,10 @@ const AddProperty = () => {
             />
           </label>
         </div>
-        <div className="form-field">
-          <button type="submit">Add</button>
+        <div className="button-container">
+          <div className="button-form-field">
+            <button type="submit">Submit</button>
+          </div>
         </div>
       </form>
     </div>

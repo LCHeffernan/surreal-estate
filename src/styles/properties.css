@@ -8,6 +8,8 @@
   grid-template-areas:
     "sidebar main";
   padding: 0px 0px 0px 0px;
+  margin: 0px;
+  width: 100%;
   background-color: rgb(171, 150, 171);
   height: 100%;
   min-height: 100vh;
@@ -33,7 +35,22 @@
 
 .property-card-container > .item {
   display: inline-block;
-  width: 33.33%;
+  width: 100%;
   padding: 0.5rem;
   box-sizing: border-box;
+}
+
+/* /* MEDIA QUERIES
+/* layout for tablet */
+@media screen and (min-width: 768px) {
+  .property-card-container > .item {
+    width: 50%;
+  } 
+}
+
+/* layout for laptop */
+@media screen and (min-width: 1200px) {
+  .property-card-container > .item {
+    width: 33.33%;
+  } 
 }

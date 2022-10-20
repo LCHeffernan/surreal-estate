@@ -23,6 +23,7 @@
 .sidebar {
     display: flex;
     justify-content: center;
+    /* min-width: 120px; */
 }
 
 form {

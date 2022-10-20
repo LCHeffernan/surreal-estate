@@ -113,7 +113,7 @@ const PropertyCard = ({
           <FontAwesomeIcon icon={savedIcon} />
         </button>
       ) : (
-        <div>no save option</div>
+        <div className="save">Log in to save this property</div>
       )}
     </div>
   );

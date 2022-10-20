@@ -1,13 +1,60 @@
 .add-property {
-    padding: 10px;
-    background-color: rgb(171, 150, 171);
-    height: 100vh;
+  padding: 10px;
+  background-color: rgb(171, 150, 171);
+  height: 100vh;
 }
 
 label {
-    margin: 5px;
+  margin: 5px;
 }
 
 .form-field {
-    margin: 10px;
+  margin: 10px;
+  display: block;
+}
+
+input:focus {
+  background-color: purple;
+  color: white;
+  outline: none;
+}
+
+input,
+select,
+button {
+  padding: 3px;
+  display: block;
+  border-radius: 8px;
+  outline: none;
+}
+
+p {
+  background-color: white;
+  width: fit-content;
+  border: 1px solid black;
+  box-shadow: 2px 2px black;
+  margin: 10px auto;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+.button-container {
+  position: relative;
+}
+
+.button-form-field {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+button:active {
+    background-color: purple;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
 }

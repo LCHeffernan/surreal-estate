@@ -24,18 +24,21 @@ const SavedProperties = ({ userID }) => {
   // if user not logged on want to block this route to them
   return (
     <div className="saved-container">
-      {userID ? (
-        favourites.map((favourite) => (
-          <div key={favourite._id} className="item">
-            <SavedPropertyCard
-              {...favourite}
-              onDeleteFavourite={handleDeleteFavourite}
-            />
-          </div>
-        ))
-      ) : (
-        <div> please log in</div>
-      )}
+      <h2>Favourites</h2>
+      <div className="saved-card-container">
+        {userID ? (
+          favourites.map((favourite) => (
+            <div key={favourite._id} className="item">
+              <SavedPropertyCard
+                {...favourite}
+                onDeleteFavourite={handleDeleteFavourite}
+              />
+            </div>
+          ))
+        ) : (
+          <div> Please log in to view your favourites.</div>
+        )}
+      </div>
     </div>
   );
 };
